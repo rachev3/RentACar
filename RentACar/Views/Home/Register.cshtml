@@ -1,53 +1,59 @@
 ﻿@model RegisterViewModel
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white text-center">
-                    <h4>Register</h4>
-                </div>
-                <div class="card-body">
-                    <form asp-action="Register" asp-controller="Account" method="post">
-                        <div class="mb-3">
-                            <label for="UserName" class="form-label">Username</label>
-                            <input asp-for="UserName" class="form-control" id="UserName" placeholder="Enter your username">
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="FirstName" class="form-label">First Name</label>
-                            <input asp-for="FirstName" class="form-control" id="FirstName" placeholder="Enter your first name">
-                            <span asp-validation-for="FirstName" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="MiddleName" class="form-label">Middle Name</label>
-                            <input asp-for="MiddleName" class="form-control" id="MiddleName" placeholder="Enter your middle name">
-                            <span asp-validation-for="MiddleName" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="LastName" class="form-label">Last Name</label>
-                            <input asp-for="LastName" class="form-control" id="LastName" placeholder="Enter your last name">
-                            <span asp-validation-for="LastName" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Email" class="form-label">Email</label>
-                            <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="Enter your email">
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Password" class="form-label">Password</label>
-                            <input asp-for="Password" type="password" class="form-control" id="Password" placeholder="Enter your password">
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="d-grid">
-                            <input type="submit" value="Регистрация" class="btn btn-outline-success float-right" asp-action="Register" />
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center">
-                    <small>Already have an account? <a href="/Account/Login" class="text-primary">Login here</a></small>
-                </div>
+
+<div class="login-page-container">
+    <!-- Left Side: Register Form -->
+    <div class="login-form-section">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Create an Account</h1>
+                <p>Sign up to start your journey</p>
+            </div>
+            <div class="login-body">
+                <form asp-action="Register" asp-controller="Account" method="post">
+                    <div class="form-group">
+                        <label for="UserName">Username</label>
+                        <input asp-for="UserName" class="form-input" id="UserName" placeholder="Enter your username" required>
+                        <span asp-validation-for="UserName" class="validation-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="FirstName">First Name</label>
+                        <input asp-for="FirstName" class="form-input" id="FirstName" placeholder="Enter your first name" required>
+                        <span asp-validation-for="FirstName" class="validation-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="MiddleName">Middle Name</label>
+                        <input asp-for="MiddleName" class="form-input" id="MiddleName" placeholder="Enter your middle name">
+                        <span asp-validation-for="MiddleName" class="validation-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="LastName">Last Name</label>
+                        <input asp-for="LastName" class="form-input" id="LastName" placeholder="Enter your last name" required>
+                        <span asp-validation-for="LastName" class="validation-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input asp-for="Email" type="email" class="form-input" id="Email" placeholder="Enter your email" required>
+                        <span asp-validation-for="Email" class="validation-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input asp-for="Password" type="password" class="form-input" id="Password" placeholder="Enter your password" required>
+                        <span asp-validation-for="Password" class="validation-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-submit">Register</button>
+                    </div>
+                </form>
+            </div>
+            <div class="login-footer">
+                <small>Already have an account? <a class="register-link" asp-controller="Home" asp-action="Login">Login here</a></small>
             </div>
         </div>
     </div>
-</div>
 
+    <!-- Right Side: Image Section -->
+    <div class="login-image-section">
+        <img src="/images/offerHandshake.jpg" alt="Register Image" class="login-image">
+        <div class="image-text">Join Us Today!</div>
+    </div>
+</div>

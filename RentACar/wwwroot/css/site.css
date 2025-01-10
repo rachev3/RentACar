@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -19,4 +19,488 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+
+/* Reset */
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: linear-gradient(to right, rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.9)); /* Gradient background */
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px); /* Adjusted blur effect */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Subtle white line */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+}
+
+    .navbar .logo {
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .navbar nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+        .navbar nav ul li {
+            margin: 0 15px;
+        }
+
+            .navbar nav ul li a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 16px;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+                /* Strikethrough effect */
+                .navbar nav ul li a.strikethrough {
+                    text-decoration: line-through;
+                    color: #ff4d4d; /* Red for emphasis */
+                    position: relative; /* Needed for the hint box positioning */
+                    display: inline-block; /* Required for animation */
+                }
+
+                    /* Hint box for strikethrough links */
+                    .navbar nav ul li a.strikethrough::after {
+                        content: "Login first or create an account"; /* Hint text */
+                        position: absolute;
+                        top: 120%; /* Position below the link */
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background-color: #000;
+                        color: #fff;
+                        font-size: 12px;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        white-space: nowrap;
+                        opacity: 0; /* Hidden by default */
+                        visibility: hidden; /* Hidden by default */
+                        transition: opacity 0.3s ease, visibility 0.3s ease;
+                        z-index: 10;
+                    }
+
+                    /* Show hint box on hover */
+                    .navbar nav ul li a.strikethrough:hover::after {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                    /* Apply shaking effect on click */
+                    .navbar nav ul li a.strikethrough:active {
+                        animation: shake 0.3s ease-in-out; /* Apply shake animation */
+                    }
+
+/* Keyframes for the shaking effect */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0); /* Default position */
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-2px); /* Smaller move left */
+    }
+
+    20%, 40%, 60%, 80% {
+        transform: translateX(2px); /* Smaller move right */
+    }
+}
+
+.navbar .icons i {
+    margin-left: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.text-green {
+    color: green; /* Green for logged-in user */
+}
+
+.text-red {
+    color: red; /* Red for not-logged-in user */
+}
+
+/* Hero section */
+.hero {
+    background: url('../images/home-hero-2.jpg') no-repeat center center/cover;
+    height: 87vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2); /* Slight overlay */
+        z-index: 1;
+    }
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
+}
+
+    .hero-content h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+/* About Us Section */
+.about-us {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.about-us-container {
+    display: flex;
+    justify-content: space-evenly; /* Spread out the items */
+    align-items: center;
+    gap: 30px; /* Increase spacing between items */
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+/* About Us Items */
+.about-us-item {
+    flex: 1 1 400px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.about-us-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.about-us-content {
+    max-width: 500px; /* Make the text area slightly wider */
+    text-align: center;
+}
+
+    .about-us-content h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+        .about-us-content h2 .highlight {
+            color: #1abc9c; /* Green highlight */
+        }
+
+    .about-us-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+.btn-learn-more {
+    display: inline-block;
+    padding: 12px 25px; /* Make button larger */
+    font-size: 16px;
+    color: #fff;
+    background-color: #1abc9c;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-learn-more:hover {
+        background-color: #16a085;
+    }
+
+/* Logos Section */
+.about-us-logos {
+    display: flex;
+    justify-content: space-evenly; /* Spread logos evenly */
+    align-items: center;
+    gap: 40px; /* Increase spacing between logos */
+    padding: 20px 0; /* Add padding above and below logos */
+}
+
+    .about-us-logos img {
+        max-width: 120px; /* Increase logo size */
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+        .about-us-logos img:hover {
+            opacity: 1;
+        }
+
+
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+    /* Dropdown item */
+    .dropdown-menu li {
+        padding: 10px 15px;
+    }
+
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            display: block;
+        }
+
+            .dropdown-menu li a:hover {
+                background-color: #f1f1f1;
+                color: #000;
+            }
+
+        /* Buttons inside the dropdown */
+        .dropdown-menu li button {
+            all: unset; /* Reset all default button styles */
+            color: #333;
+            font-size: 14px;
+            display: block;
+            width: 100%; /* Ensure full width for button */
+            padding: 5px 10px; /* Ensure spacing */
+            text-align: left; /* Align text to the left for consistency */
+            cursor: pointer;
+            border-radius: 4px; /* Rounded corners */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+            .dropdown-menu li button:hover {
+                background-color: #f1f1f1;
+                color: #000;
+            }
+
+/* ========================= */
+/* Login/Register Page Styles*/
+/* ========================= */
+
+/* Fullscreen Container */
+.login-page-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f4f4f4; /* Slightly lighter gray background */
+}
+
+/* Left Section: Login/Register Form */
+.login-form-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #f9f9f9, #dcdcdc); /* Slightly darker gradient */
+    border-right: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Login/Register Card */
+.login-card {
+    width: 80%;
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Reduced shadow for subtle effect */
+    text-align: center;
+    padding: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Softer border */
+}
+
+/* Login/Register Header */
+.login-header {
+    margin-bottom: 20px;
+}
+
+    .login-header h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
+    }
+
+    .login-header p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #777;
+    }
+
+/* Login/Register Body */
+.login-body {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #333;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+    .form-input:focus {
+        border-color: #1abc9c;
+        outline: none;
+        background-color: #fff;
+    }
+
+.validation-error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to right, #1abc9c, #16a085);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-submit:hover {
+        background: #149174;
+    }
+
+/* Login/Register Footer */
+.login-footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-link {
+    color: #1abc9c;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .register-link:hover {
+        color: #16a085;
+    }
+
+/* Right Section: Image */
+.login-image-section {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Text Overlay on Image */
+.image-text {
+    position: absolute;
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 0 6px 10px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+   /* background-color: rgba(0, 0, 0, 0.4);   */
+    border-radius: 8px; /* Rounded text box */
+}
+
+/* Semi-transparent overlay */
+.login-image-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
 }
