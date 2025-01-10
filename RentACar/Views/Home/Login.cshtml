@@ -1,0 +1,33 @@
+﻿@model LoginViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Login</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Login" asp-controller="Home" method="post">
+                        <div class="mb-3">
+                            <label for="UserName" class="form-label">Username</label>
+                            <input asp-for="UserName" class="form-control" id="UserName" placeholder="Enter your username" required>
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password" class="form-label">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" id="Password" placeholder="Enter your password" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Don't have an account? <a href="/Account/Register" class="text-primary">Register here</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

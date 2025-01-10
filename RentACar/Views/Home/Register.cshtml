@@ -1,0 +1,53 @@
+﻿@model RegisterViewModel
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Register</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Register" asp-controller="Account" method="post">
+                        <div class="mb-3">
+                            <label for="UserName" class="form-label">Username</label>
+                            <input asp-for="UserName" class="form-control" id="UserName" placeholder="Enter your username">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="FirstName" class="form-label">First Name</label>
+                            <input asp-for="FirstName" class="form-control" id="FirstName" placeholder="Enter your first name">
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="MiddleName" class="form-label">Middle Name</label>
+                            <input asp-for="MiddleName" class="form-control" id="MiddleName" placeholder="Enter your middle name">
+                            <span asp-validation-for="MiddleName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="LastName" class="form-label">Last Name</label>
+                            <input asp-for="LastName" class="form-control" id="LastName" placeholder="Enter your last name">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="Enter your email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password" class="form-label">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" id="Password" placeholder="Enter your password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <input type="submit" value="Регистрация" class="btn btn-outline-success float-right" asp-action="Register" />
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Already have an account? <a href="/Account/Login" class="text-primary">Login here</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
