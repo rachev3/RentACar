@@ -23,6 +23,10 @@
                     {
                         <li><a href="#ren">Rent Car</a></li>
                         <li><a href="#sell">Cars</a></li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-controller="Admin" asp-action="Index">Admin Panel</a></li>
+                        }
                     }
                     else
                     {
@@ -63,7 +67,9 @@
             @RenderBody()
         </main>
     </div>
-
+    <footer>
+        <p>&copy; 2022 - RentACar</p>
+    </footer>
  
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

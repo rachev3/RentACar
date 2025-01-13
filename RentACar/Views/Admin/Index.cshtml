@@ -1,0 +1,104 @@
+﻿@model ClientsListAdminPanelViewModel
+
+<div class="admin-panel-container">
+    <div class="admin-panel-header">
+        <h1>Admin Panel</h1>
+        <p>Manage all users</p>
+    </div>
+
+    <!-- Search and Dropdown Section -->
+    <div class="admin-panel-controls">
+        <input type="text"
+               id="searchQuery"
+               value="@Model.SearchQuery"
+               class="form-input search-bar"
+               placeholder="Search by First Name, Middle Name, or Last Name..." />
+
+        <select id="usersPerPage" class="form-select" data-selected-value="@Model.UsersPerPage">
+            <option value="3">Show 3 per page</option>
+            <option value="5">Show 5 per page</option>
+            <option value="7">Show 7 per page</option>
+        </select>
+    </div>
+
+    <!-- Table -->
+    <div id="clientsTable" class="admin-panel-table-container">
+        @Html.Partial("_ClientsTable", Model)
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+        <a class="btn-pagination @(Model.CurrentPage <= 1 ? "disabled" : "")"
+           href="#"
+           data-page="@Math.Max(Model.CurrentPage - 1, 1)">Previous</a>
+
+        <span>Page @Model.CurrentPage of @Model.TotalPages</span>
+
+        <a class="btn-pagination @(Model.CurrentPage >= Model.TotalPages ? "disabled" : "")"
+           href="#"
+           data-page="@Math.Min(Model.CurrentPage + 1, Model.TotalPages)">Next</a>
+    </div>
+
+</div>
+
+<script>
+     document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchQuery');
+        const usersPerPageSelect = document.getElementById('usersPerPage');
+
+        // Set the selected value of the dropdown
+        const selectedValue = usersPerPageSelect.getAttribute('data-selected-value');
+        if (selectedValue) {
+            usersPerPageSelect.value = selectedValue;
+        }
+
+        // Handle dynamic search
+        searchInput.addEventListener('input', function () {
+            const searchQuery = searchInput.value;
+            const usersPerPage = usersPerPageSelect.value;
+            fetchClients(1, searchQuery, usersPerPage);
+        });
+
+        // Handle users per page change
+        usersPerPageSelect.addEventListener('change', function () {
+            const searchQuery = searchInput.value;
+            const usersPerPage = usersPerPageSelect.value;
+            fetchClients(1, searchQuery, usersPerPage);
+        });
+
+        // Handle pagination using event delegation
+        document.body.addEventListener('click', function (e) {
+            if (e.target.classList.contains('btn-pagination') && !e.target.classList.contains('disabled')) {
+                e.preventDefault();
+                const page = e.target.getAttribute('data-page');
+                const searchQuery = searchInput.value;
+                const usersPerPage = usersPerPageSelect.value;
+                fetchClients(page, searchQuery, usersPerPage);
+            }
+        });
+
+        // Function to fetch and update the table and pagination via AJAX
+        function fetchClients(page, searchQuery, usersPerPage) {
+            const url = `/Admin/Index?page=${page}&searchQuery=${encodeURIComponent(searchQuery)}&usersPerPage=${usersPerPage}`;
+            fetch(url, { method: 'GET' })
+                .then(response => response.text())
+                .then(html => {
+                    // Replace only the table content and prevent duplications
+                    const parser = new DOMParser();
+                    const newDocument = parser.parseFromString(html, 'text/html');
+
+                    const newTable = newDocument.querySelector('#clientsTable');
+                    if (newTable) {
+                        document.getElementById('clientsTable').innerHTML = newTable.innerHTML;
+                    }
+
+                    const newPagination = newDocument.querySelector('.pagination-controls');
+                    if (newPagination) {
+                        document.querySelector('.pagination-controls').innerHTML = newPagination.innerHTML;
+                    }
+                })
+                .catch(error => console.error('Error fetching clients:', error));
+        }
+    });
+
+</script>

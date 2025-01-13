@@ -344,7 +344,8 @@ body {
 .login-page-container {
     display: flex;
     height: 100vh;
-    overflow: hidden;
+   /* overflow: hidden;*/
+   
     background-color: #f4f4f4; /* Slightly lighter gray background */
 }
 
@@ -356,6 +357,7 @@ body {
     align-items: center;
     background: linear-gradient(to bottom, #f9f9f9, #dcdcdc); /* Slightly darker gradient */
     border-right: 2px solid rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
 }
 
 /* Login/Register Card */
@@ -503,4 +505,143 @@ label {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1;
+}
+
+/* ========================= */
+/* Admin Panel Page Styles*/
+/* ========================= */
+
+.admin-panel-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Make the container span the entire viewport height */
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
+}
+
+.admin-panel-table-container {
+    flex-grow: 1; /* Allow the table to grow and fill available space */
+    overflow-x: auto;
+}
+
+.admin-panel-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .admin-panel-header h1 {
+        font-size: 32px;
+        color: #333;
+    }
+
+    .admin-panel-header p {
+        font-size: 16px;
+        color: #777;
+    }
+
+.admin-panel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+    .admin-panel-table th,
+    .admin-panel-table td {
+        padding: 12px 20px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .admin-panel-table th {
+        background-color: #1abc9c;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .admin-panel-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .admin-panel-table tr:hover {
+        background-color: #e9f5f3;
+    }
+
+.btn-delete {
+    background: #e74c3c;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-delete:hover {
+        background-color: #c0392b;
+    }
+
+.delete-form {
+    margin: 0;
+    display: inline;
+}
+
+.admin-panel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.search-bar {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-select {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-pagination {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1abc9c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-pagination:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .btn-pagination:hover:not(:disabled) {
+        background-color: #16a085;
+    }
+
+#pageInfo {
+    font-size: 14px;
+    color: #555;
 }

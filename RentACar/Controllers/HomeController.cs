@@ -38,7 +38,8 @@ namespace RentACar.Controllers
                 FirstName = model.FirstName,
                 MiddleName = model.MiddleName,
                 LastName = model.LastName,
-                Email = model.Email
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber
             };
             var user = await userManager.FindByEmailAsync(model.Email) ?? await userManager.FindByNameAsync(model.UserName);
 

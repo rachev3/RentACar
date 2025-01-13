@@ -1,0 +1,34 @@
+﻿@model ClientsListAdminPanelViewModel
+
+<table class="admin-panel-table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Username</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model.Clients)
+        {
+            <tr>
+                <td>@client.FirstName</td>
+                <td>@client.MiddleName</td>
+                <td>@client.LastName</td>
+                <td>@client.Email</td>
+                <td>@client.PhoneNumber</td>
+                <td>@client.UserName</td>
+                <td>
+                    <form asp-action="DeleteUser" asp-controller="Admin" method="post" class="delete-form">
+                        <input type="hidden" name="userId" value="@client.Id" />
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

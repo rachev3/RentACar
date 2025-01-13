@@ -9,7 +9,7 @@
                 <p>Sign up to start your journey</p>
             </div>
             <div class="login-body">
-                <form asp-action="Register" asp-controller="Account" method="post">
+                <form asp-action="Register" asp-controller="Home" method="post">
                     <div class="form-group">
                         <label for="UserName">Username</label>
                         <input asp-for="UserName" class="form-input" id="UserName" placeholder="Enter your username" required>
@@ -34,6 +34,11 @@
                         <label for="Email">Email</label>
                         <input asp-for="Email" type="email" class="form-input" id="Email" placeholder="Enter your email" required>
                         <span asp-validation-for="Email" class="validation-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="PhoneNumber">Phone Number</label>
+                        <input asp-for="PhoneNumber" type="tel" class="form-input" id="PhoneNumber" placeholder="Enter your phone number" required>
+                        <span asp-validation-for="PhoneNumber" class="validation-error"></span>
                     </div>
                     <div class="form-group">
                         <label for="Password">Password</label>
