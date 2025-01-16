@@ -22,20 +22,36 @@
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li><a href="#ren">Rent Car</a></li>
-                        <li><a href="#sell">Cars</a></li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li><a asp-controller="Admin" asp-action="Index">Admin Panel</a></li>
-                        }
+                        <li><a asp-controller="Car" asp-action="Index">Cars</a></li>
                     }
                     else
                     {
                         <li><a href="" class="strikethrough">Rent Car</a></li>
                         <li><a href="" class="strikethrough">Cars</a></li>
                     }
+                    @*   @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-controller="Admin" asp-action="Index">Admin Panel</a></li>
+                    } *@
+
+
                 </ul>
             </nav>
+
             <div class="icons">
+                @if (User.IsInRole("Admin"))
+                {
+
+                    <div class="dropdown">
+                        <i class="fa-solid fa-pen" onclick="toggleDropdown('adminPanelDropdown')"></i>
+                        <ul class="dropdown-menu" id="adminPanelDropdown">
+                            <li> <a class="dropdown-item" asp-controller="Admin" asp-action="Index">Users</a></li>
+                            <li> <a class="dropdown-item" asp-controller="Admin" asp-action="Cars">Cars</a></li>
+                        </ul>
+                    </div>
+
+
+                }
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <div class="dropdown">
@@ -59,6 +75,8 @@
                         </ul>
                     </div>
                 }
+
+
             </div>
         </div>
     </header>
@@ -70,7 +88,7 @@
     <footer>
         <p>&copy; 2022 - RentACar</p>
     </footer>
- 
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

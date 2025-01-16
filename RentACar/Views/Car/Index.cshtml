@@ -1,0 +1,115 @@
+﻿<div class="car-rental-page">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1 class="hero-title">Rent a Car for Every Journey</h1>
+        <div class="hero-filters">
+            <form method="get" action="/Cars/List">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="brand">Brand</label>
+                        <input type="text"
+                               id="brand"
+                               name="BrandFilter"
+                               placeholder="Enter brand..."
+                               class="form-input"
+                               value="@Model.BrandFilter" />
+                    </div>
+                    <div class="filter-group">
+                        <label for="model">Model</label>
+                        <input type="text"
+                               id="model"
+                               name="ModelFilter"
+                               placeholder="Enter model..."
+                               class="form-input"
+                               value="@Model.ModelFilter" />
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="year">Year of Production</label>
+                        <input type="number"
+                               id="year"
+                               name="YearOfManufactureFilter"
+                               placeholder="Enter year..."
+                               class="form-input"
+                               value="@(Model.YearOfManufactureFilter.Year > 1 ? Model.YearOfManufactureFilter.Year.ToString() : "")" />
+                    </div>
+                    <div class="filter-group">
+                        <label for="priceRange">Price Range (Per Day)</label>
+                        <div class="price-range-container">
+                            <input type="range" id="priceMin" min="0" max="1000" value="0" step="10" oninput="updatePriceRange()">
+                            <input type="range" id="priceMax" min="0" max="1000" value="1000" step="10" oninput="updatePriceRange()">
+                            <div class="slider-track"></div>
+                            <div class="price-values">
+                                <span id="priceMinValue">$0</span>
+                                <span class="price-divider">-</span>
+                                <span id="priceMaxValue">$1000</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="filter-row">
+                    <div class="filter-group filter-action">
+                        <label>Rental Status</label>
+                        <div class="radio-buttons">
+                            <label>
+                                <input type="radio"
+                                       name="IsRentedFilter"
+                                       value="false"
+                                @(Model.IsRentedFilter == false ? "checked" : "") /> Not Rented
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       name="IsRentedFilter"
+                                       value="true"
+                                @(Model.IsRentedFilter == true ? "checked" : "") /> Rented
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-search">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Car Listing Section -->
+    <div class="car-listing-section">
+        @if (Model.Cars != null && Model.Cars.Any())
+        {
+            <div class="car-grid">
+                @foreach (var car in Model.Cars)
+                {
+                    <div class="car-card">
+                        <div class="car-label">@car.Brand</div>
+                        <div class="car-status-dot @(car.IsRented ? "rented" : "available")"></div>
+                        <img src="~/images/cars/@car.CarId.jpg"
+                             alt="@car.Brand @car.Model"
+                             class="car-image"
+                             onerror="this.onerror=null;this.src='~/images/default-car.jpg';" />
+                        <div class="car-details">
+                            <h3 class="car-title">@car.Brand @car.Model</h3>
+                            <p class="car-info">@car.YearOfManufacture.Year</p>
+                            <p class="car-info">@car.LicensePlateNumber</p>
+                            <p class="car-price">From $@car.PricePerDay/day</p>
+                            <div class="car-actions">
+                                <form method="post" action="/Cars/Rent">
+                                    <input type="hidden" name="CarId" value="@car.CarId" />
+                                    <button type="submit" class="btn-action rent-btn" @(car.IsRented ? "disabled" : "")>Rent</button>
+                                </form>
+                                <a href="/Cars/Details/@car.CarId" class="btn-action details-btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No cars found matching the filters.</p>
+        }
+    </div>
+</div>

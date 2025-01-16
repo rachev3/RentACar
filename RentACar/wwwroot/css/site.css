@@ -344,8 +344,8 @@ body {
 .login-page-container {
     display: flex;
     height: 100vh;
-   /* overflow: hidden;*/
-   
+    /* overflow: hidden;*/
+
     background-color: #f4f4f4; /* Slightly lighter gray background */
 }
 
@@ -491,7 +491,7 @@ label {
     text-align: center;
     z-index: 2;
     padding: 20px;
-   /* background-color: rgba(0, 0, 0, 0.4);   */
+    /* background-color: rgba(0, 0, 0, 0.4);   */
     border-radius: 8px; /* Rounded text box */
 }
 
@@ -503,7 +503,7 @@ label {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
@@ -645,3 +645,325 @@ label {
     font-size: 14px;
     color: #555;
 }
+
+/* ========================= */
+/* Cars page Style*/
+/* ========================= */
+
+/* General Styles */
+.car-rental-page {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-top: 10vh;
+    background-color: #f9f9f9;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('../images/map-2ppl.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-filters {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: left;
+    width: 90%;
+    max-width: 1200px;
+}
+/* Price Range Container */
+.price-range-container {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+    /* Slider Inputs */
+    .price-range-container input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        height: 6px;
+        background: transparent;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+        .price-range-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 16px;
+            width: 16px;
+            background: #007bff;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            position: relative;
+            z-index: 3;
+            transition: transform 0.2s ease;
+        }
+
+            .price-range-container input[type="range"]::-webkit-slider-thumb:hover {
+                transform: scale(1.2);
+            }
+
+        .price-range-container input[type="range"]::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            background: #007bff;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+            .price-range-container input[type="range"]::-moz-range-thumb:hover {
+                transform: scale(1.2);
+            }
+
+/* Slider Track */
+.slider-track {
+    position: absolute;
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    top: 12px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+    .slider-track.active {
+        background: linear-gradient(to right, #ddd, #007bff);
+    }
+
+/* Price Range Values */
+.price-values {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-divider {
+    color: #999;
+    margin: 0 8px;
+}
+
+
+/* Slider Track */
+.slider-track {
+    position: absolute;
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    top: 7px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+    .slider-track.active {
+        background: #1abc9c;
+    }
+
+/* Price Range Values */
+.price-values {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.filter-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.filter-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+    .filter-group label {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+.form-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.radio-buttons label {
+    margin-right: 15px;
+}
+
+.btn-search {
+    background: linear-gradient(to right, #1abc9c, #16a085);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .btn-search:hover {
+        background: #149174;
+    }
+
+/* Car Listing Section */
+.car-listing-section {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 20px;
+}
+
+/* Car Cards */
+.car-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: left;
+    max-width: 100%;
+    height: 350px; /* Fixed height for consistency */
+}
+
+/* Image Section */
+.car-image {
+    width: 100%;
+    height: 150px; /* Fixed height */
+    object-fit: contain; /* Ensures the image fits within the space without being cropped */
+    background-color: #f9f9f9; /* Optional: Add a background color for padding effect */
+    padding: 5px; /* Add some spacing around the image */
+    border-bottom: 1px solid #ddd; /* Optional: Separator line between image and content */
+}
+
+/* Labels */
+.car-type-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+}
+
+.car-status-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #27ae60; /* Default to available (green) */
+}
+
+    .car-status-dot.rented {
+        background-color: #e74c3c; /* Rented (red) */
+    }
+
+/* Details Section */
+.car-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.car-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.car-info {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.car-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #16a085;
+    margin-bottom: 10px;
+}
+
+/* Buttons inside car cards */
+.car-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Push buttons to the bottom */
+}
+
+.btn-action {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.rent-btn {
+    background-color: #1abc9c;
+    color: white;
+}
+
+.details-btn {
+    background-color: #555;
+    color: white;
+}
+
+.rent-btn:hover {
+    background-color: #16a085;
+}
+
+.details-btn:hover {
+    background-color: #333;
+}
+
+
