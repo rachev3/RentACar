@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RentACar.Models;
+using RentACar.Services.Interfaces;
 using RentACar.ViewModels.User;
 
 namespace RentACar.Controllers
@@ -10,10 +11,12 @@ namespace RentACar.Controllers
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;
+        private readonly ICarService _carService;
 
-        public AdminController(UserManager<User> userManager)
+        public AdminController(UserManager<User> userManager, ICarService carService)
         {
             _userManager = userManager;
+            _carService = carService;
         }
         public async Task<IActionResult> Index(string searchQuery = "", int usersPerPage = 3, int page = 1)
         {
@@ -96,6 +99,20 @@ namespace RentACar.Controllers
                 ModelState.AddModelError("", error.Description);
             }
             return View("Error");
+        }
+
+        public async Task<IActionResult> Cars()
+        {
+            var viewModel = await _carService.GetAll();
+            return View("CarsManagementPage", viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteCar(int carId)
+        {
+            // Find the user by ID
+            await _carService.Delete(carId);
+            return RedirectToAction("Cars");
         }
     }
 }

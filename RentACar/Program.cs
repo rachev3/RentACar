@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using RentACar.Data;
 using RentACar.Models;
 using RentACar.Seeders;
+using RentACar.Services.Implementations;
+using RentACar.Services.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,9 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddRazorPages();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ICarService, CarService>();
+
 
 var app = builder.Build();
 
@@ -48,8 +53,12 @@ using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-    await RolesAndAdminSeeder.Initialize(userManager, roleManager);
+    // Ensure the database is created
+    dbContext.Database.EnsureCreated();
+
+    await RolesAndAdminSeeder.Initialize(userManager, roleManager, dbContext);
 }
 
 app.MapControllerRoute(

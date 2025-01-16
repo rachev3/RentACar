@@ -1,0 +1,22 @@
+﻿@model CarListViewModel
+
+<div class="admin-panel-container">
+    <div class="admin-panel-header">
+        <h1>Admin Panel</h1>
+        <p>Manage all cars</p>
+    </div>
+
+    <!-- Search Section -->
+@*     <div class="admin-panel-controls">
+        <input type="text"
+               id="searchQuery"
+               value="@Model.SearchQuery"
+               class="form-input search-bar"
+               placeholder="Search by Car Make, Model, or Registration Number..." />
+    </div> *@
+
+    <!-- Table -->
+    <div id="carsTable" class="admin-panel-table-container">
+        @Html.Partial("_CarsTable", @Model)
+    </div>
+</div>
