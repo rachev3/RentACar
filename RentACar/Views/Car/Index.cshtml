@@ -1,4 +1,5 @@
-﻿<div class="car-rental-page">
+﻿
+<div class="car-rental-page">
     <!-- Hero Section -->
     <div class="hero-section">
         <h1 class="hero-title">Rent a Car for Every Journey</h1>
@@ -78,7 +79,7 @@
 
     <!-- Car Listing Section -->
     <div class="car-listing-section">
-        @if (Model.Cars != null && Model.Cars.Any())
+        @if (Model.Cars != null)
         {
             <div class="car-grid">
                 @foreach (var car in Model.Cars)
@@ -86,10 +87,10 @@
                     <div class="car-card">
                         <div class="car-label">@car.Brand</div>
                         <div class="car-status-dot @(car.IsRented ? "rented" : "available")"></div>
-                        <img src="~/images/cars/@car.CarId.jpg"
+                        @* <img src="~/images/cars/@car.CarId.jpg"
                              alt="@car.Brand @car.Model"
                              class="car-image"
-                             onerror="this.onerror=null;this.src='~/images/default-car.jpg';" />
+                             onerror="this.onerror=null;this.src='~/images/default-car.jpg';" /> *@
                         <div class="car-details">
                             <h3 class="car-title">@car.Brand @car.Model</h3>
                             <p class="car-info">@car.YearOfManufacture.Year</p>
