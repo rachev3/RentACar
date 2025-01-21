@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RentACar.Models;
 using RentACar.Services.Interfaces;
+using RentACar.ViewModels.Car;
 using RentACar.ViewModels.User;
 
 namespace RentACar.Controllers
@@ -110,10 +111,86 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteCar(int carId)
         {
-            // Find the user by ID
+            // Retrieve the car from the service
+            var car = await _carService.GetById(carId);
+
+            // Validate if the car is rented
+            if (car == null)
+            {
+                TempData["Error"] = "Car not found.";
+                return RedirectToAction("Cars");
+            }
+
+            if (car.IsRented)
+            {
+                TempData["Error"] = "Cannot delete a car that is currently rented.";
+                return RedirectToAction("Cars");
+            }
+
+            // Perform deletion
             await _carService.Delete(carId);
+    
             return RedirectToAction("Cars");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditCar(int carId)
+        {
+            var viewModel = await _carService.GetById(carId);
+
+            // Validate if the car is rented
+            if (viewModel == null)
+            {
+                TempData["Error"] = "Car not found.";
+                return RedirectToAction("Cars");
+            }
+
+            if (viewModel.IsRented)
+            {
+                TempData["Error"] = "Cannot edit a car that is currently rented.";
+                return RedirectToAction("Cars");
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditCarSave(CarViewModel viewModel)
+        {
+            // Retrieve the car from the service
+            var existingCar = await _carService.GetById(viewModel.CarId);
+
+            // Validate if the car is rented
+            if (existingCar == null)
+            {
+                TempData["Error"] = "Car not found.";
+                return RedirectToAction("Cars");
+            }
+
+            if (existingCar.IsRented)
+            {
+                TempData["Error"] = "Cannot save changes to a car that is currently rented.";
+                return RedirectToAction("Cars");
+            }
+
+            // Perform update
+            await _carService.Update(viewModel);
+            return RedirectToAction("Cars");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateCar()
+        {
+            CarViewModel viewModel = new();    
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateCarSave(CarViewModel viewModel)
+        {
+            await _carService.Create(viewModel);
+            return RedirectToAction("Cars");
+        }
+
     }
 }
 

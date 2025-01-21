@@ -513,6 +513,7 @@ label {
 
 .admin-panel-container {
     display: flex;
+    margin-top: 70px;
     flex-direction: column;
     min-height: 100vh; /* Make the container span the entire viewport height */
     padding: 40px 20px;
@@ -568,21 +569,6 @@ label {
 
     .admin-panel-table tr:hover {
         background-color: #e9f5f3;
-    }
-
-.btn-delete {
-    background: #e74c3c;
-    color: #fff;
-    padding: 8px 12px;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-    .btn-delete:hover {
-        background-color: #c0392b;
     }
 
 .delete-form {
@@ -967,3 +953,274 @@ label {
 }
 
 
+
+/* Edit Button */
+.btn-edit {
+    background-color: #ffc107; /* Yellow color for edit */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-edit:hover {
+        background-color: #e0a800; /* Darker yellow on hover */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+/* Details Button */
+.btn-details {
+    background-color: #17a2b8; /* Blue color for details */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-details:hover {
+        background-color: #117a8b; /* Darker blue on hover */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+.btn-delete {
+    background: #e74c3c; /* Red color for delete */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px; /* Match padding with other buttons */
+    font-size: 14px; /* Match font size */
+    font-weight: bold; /* Match font weight */
+    text-decoration: none;
+    display: inline-block; /* Ensures it behaves like the other buttons */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center; /* Ensure text alignment consistency */
+}
+
+    .btn-delete:hover {
+        background-color: #c0392b; /* Darker red on hover */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Consistent hover effect */
+    }
+
+.admin-panel-controls .btn {
+    padding: 10px 20px; /* Padding for a balanced look */
+    font-size: 16px; /* Font size for readability */
+    font-weight: bold; /* Make the text bold */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    background-color: #007bff; /* Primary blue color */
+    color: #fff; /* White text for contrast */
+    border: none; /* Remove default border */
+    text-decoration: none; /* Remove underline from links */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+    .admin-panel-controls .btn:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+    }
+
+    .admin-panel-controls .btn:active {
+        background-color: #004085; /* Even darker blue when clicked */
+        transform: translateY(2px); /* Slightly pressed effect */
+    }
+
+
+
+/* ========================= */
+/* Car Edit page styles */
+/* ========================= */
+
+/* Scoped Container for the Edit Car View */
+.edit-car-container {
+    padding: 20px;
+    margin: 100px auto;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    /* Title */
+    .edit-car-container h1 {
+        text-align: center;
+        font-size: 28px;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    /* Form Groups */
+    .edit-car-container .form-group {
+        margin-bottom: 20px;
+    }
+
+        .edit-car-container .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .edit-car-container .form-group input,
+        .edit-car-container .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+            .edit-car-container .form-group input:focus,
+            .edit-car-container .form-group select:focus {
+                border-color: #007bff;
+                background-color: #fff;
+                outline: none;
+            }
+
+    /* Validation Errors */
+    .edit-car-container .text-danger {
+        font-size: 12px;
+        color: #e74c3c;
+        margin-top: 5px;
+    }
+
+    /* Buttons */
+    .edit-car-container .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .edit-car-container .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+    }
+
+        .edit-car-container .btn-primary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+    .edit-car-container .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+        margin-left: 10px;
+    }
+
+        .edit-car-container .btn-secondary:hover {
+            background-color: #5a6268;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+/* ========================= */
+/* Car Create page styles */
+/* ========================= */
+/* Container for the create car form */
+.create-car-container {
+    max-width: 600px; /* Center the form with a fixed width */
+    margin: 80px auto; /* Center the form vertically and horizontally */
+    padding: 20px; /* Add padding around the form */
+    background-color: #f9f9f9; /* Light gray background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+    /* Header styling */
+    .create-car-container h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007bff; /* Primary blue color */
+        font-weight: bold;
+    }
+
+    /* Form group styling */
+    .create-car-container .form-group {
+        margin-bottom: 20px;
+    }
+
+        /* Label styling */
+        .create-car-container .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #333; /* Dark gray for contrast */
+        }
+
+    /* Input and select styling */
+    .create-car-container .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd; /* Light border for inputs */
+        border-radius: 5px; /* Rounded corners for inputs */
+        background-color: #fff; /* White background */
+        transition: border-color 0.3s ease; /* Smooth border transition */
+    }
+
+        /* Focus state for inputs */
+        .create-car-container .form-control:focus {
+            border-color: #007bff; /* Primary blue border on focus */
+            outline: none; /* Remove default outline */
+        }
+
+    /* Validation error messages */
+    .create-car-container .text-danger {
+        font-size: 12px;
+        color: #e74c3c; /* Red for errors */
+        margin-top: 5px;
+    }
+
+    /* Buttons */
+    .create-car-container .btn {
+        padding: 10px 20px; /* Add padding for larger click area */
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Smooth transition for hover states */
+    }
+
+    .create-car-container .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .create-car-container .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+    .create-car-container .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+        margin-left: 10px;
+    }
+
+        .create-car-container .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }

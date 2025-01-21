@@ -1,22 +1,26 @@
 ﻿@model CarListViewModel
 
+
 <div class="admin-panel-container">
+
     <div class="admin-panel-header">
         <h1>Admin Panel</h1>
         <p>Manage all cars</p>
     </div>
 
-    <!-- Search Section -->
-@*     <div class="admin-panel-controls">
-        <input type="text"
-               id="searchQuery"
-               value="@Model.SearchQuery"
-               class="form-input search-bar"
-               placeholder="Search by Car Make, Model, or Registration Number..." />
-    </div> *@
+    <!-- Add Button -->
+    <div class="admin-panel-controls">
+        <a asp-action="CreateCar" asp-controller="Admin" class="btn">Create New Car</a>
+    </div>
 
     <!-- Table -->
     <div id="carsTable" class="admin-panel-table-container">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
         @Html.Partial("_CarsTable", @Model)
     </div>
 </div>

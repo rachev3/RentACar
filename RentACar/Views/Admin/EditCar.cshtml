@@ -1,0 +1,52 @@
+﻿@model CarViewModel
+
+<div class="edit-car-container">
+    <h1>Edit Car</h1>
+
+    <form asp-action="EditCarSave" asp-controller="Admin" method="post">
+        <input type="hidden" asp-for="CarId" />
+
+        <div class="form-group">
+            <label asp-for="LicensePlateNumber" class="control-label">License Plate Number</label>
+            <input asp-for="LicensePlateNumber" class="form-control" />
+            <span asp-validation-for="LicensePlateNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Brand" class="control-label">Brand</label>
+            <input asp-for="Brand" class="form-control" />
+            <span asp-validation-for="Brand" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Model" class="control-label">Model</label>
+            <input asp-for="Model" class="form-control" />
+            <span asp-validation-for="Model" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="YearOfManufacture" class="control-label">Year of Manufacture</label>
+            <input asp-for="YearOfManufacture" type="date" class="form-control" />
+            <span asp-validation-for="YearOfManufacture" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="IsRented" class="control-label">Is Rented</label>
+            <select asp-for="IsRented" class="form-control">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <span asp-validation-for="IsRented" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PricePerDay" class="control-label">Price Per Day</label>
+            <input asp-for="PricePerDay" type="number" step="0.01" class="form-control" />
+            <span asp-validation-for="PricePerDay" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a asp-action="Cars" asp-controller="Admin" class="btn btn-secondary">Cancel</a>
+    </form>
+
+</div>
