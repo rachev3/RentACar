@@ -97,6 +97,8 @@ function updatePriceRange() {
     const priceMinValue = document.getElementById("priceMinValue");
     const priceMaxValue = document.getElementById("priceMaxValue");
     const sliderTrack = document.querySelector(".slider-track");
+    const priceRangeStart = document.getElementById("PriceRangeStart");
+    const priceRangeEnd = document.getElementById("PriceRangeEnd");
 
     // Prevent sliders from crossing
     if (parseInt(priceMin.value) >= parseInt(priceMax.value)) {
@@ -110,14 +112,27 @@ function updatePriceRange() {
     priceMinValue.textContent = `$${priceMin.value}`;
     priceMaxValue.textContent = `$${priceMax.value}`;
 
+    // Update hidden inputs
+    if (priceRangeStart && priceRangeEnd) {
+        priceRangeStart.value = priceMin.value;
+        priceRangeEnd.value = priceMax.value;
+    }
+
     // Update slider track
     updateSliderTrack();
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    updateSliderTrack();
+});
 function updateSliderTrack() {
     const priceMin = document.getElementById("priceMin");
     const priceMax = document.getElementById("priceMax");
     const sliderTrack = document.querySelector(".slider-track");
+
+    if (!priceMin || !priceMax || !sliderTrack) {
+        return;
+    }
 
     const minPercent = (priceMin.value / priceMin.max) * 100;
     const maxPercent = (priceMax.value / priceMax.max) * 100;
@@ -125,10 +140,7 @@ function updateSliderTrack() {
     sliderTrack.style.background = `linear-gradient(to right, #ddd ${minPercent}%, #007bff ${minPercent}%, #007bff ${maxPercent}%, #ddd ${maxPercent}%)`;
 }
 
-// Initialize slider track
-document.addEventListener("DOMContentLoaded", () => {
-    updateSliderTrack();
-});
+
 
 
 

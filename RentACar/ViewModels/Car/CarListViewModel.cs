@@ -8,6 +8,6 @@
         public double PriceRangeStart { get; set; }
         public double PriceRangeEnd { get; set; }
         public DateOnly YearOfManufactureFilter { get; set; }
-        public bool IsRentedFilter { get; set; }
+        public bool? IsRentedFilter { get; set; }
     }
 }
