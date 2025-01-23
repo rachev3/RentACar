@@ -25,6 +25,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<IRentService, RentService>();
 
 
 var app = builder.Build();

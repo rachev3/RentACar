@@ -1224,3 +1224,174 @@ label {
             background-color: #5a6268; /* Darker gray on hover */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
         }
+
+/* ========================= */
+
+/* Rental Page Styles */
+/* Rental Page Styles */
+.rental-page .rent-page-container {
+    max-width: 800px;
+    margin: 70px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .rental-page .rent-page-container h1,
+    .rental-page .rent-page-container h2 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+.rental-page .info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.rental-page .car-info,
+.rental-page .user-info {
+    flex: 1;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    .rental-page .car-info h2,
+    .rental-page .user-info h2 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+.rental-page .calendar-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rental-page .calendar-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+    .rental-page .calendar-controls label {
+        font-weight: bold;
+    }
+
+    .rental-page .calendar-controls select {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+.rental-page .calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rental-page .days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.rental-page .calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+    .rental-page .calendar-dates div {
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+        .rental-page .calendar-dates div.available {
+            background-color: white;
+            color: black;
+            border: 1px solid #007bff;
+        }
+
+        .rental-page .calendar-dates div.reserved {
+            background-color: red;
+            color: white;
+            cursor: not-allowed;
+        }
+
+        .rental-page .calendar-dates div.selected {
+            background-color: green;
+            color: white;
+        }
+
+        .rental-page .calendar-dates div:hover {
+            transform: scale(1.1);
+        }
+
+.rental-page .summary-section {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rental-page .actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.rental-page .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .rental-page .btn:hover {
+        transform: scale(1.05);
+    }
+
+.rental-page .btn-discard {
+    background-color: #e74c3c;
+    color: white;
+}
+
+    .rental-page .btn-discard:hover {
+        background-color: #c0392b;
+    }
+
+.rental-page .btn-confirm {
+    background-color: #1abc9c;
+    color: white;
+}
+
+    .rental-page .btn-confirm:hover {
+        background-color: #16a085;
+    }

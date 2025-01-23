@@ -1,0 +1,77 @@
+﻿@using System.Text.Json
+@model CreateRentViewModel
+
+<div class="rental-page">
+    <div class="rent-page-container">
+        <h1>Rent a Car</h1>
+
+        <!-- Car and User Information Section -->
+        <div class="info-section">
+            <div class="car-info">
+                <h2>Car Information</h2>
+                <p><strong>Brand:</strong> @Model.Car.Brand</p>
+                <p><strong>Model:</strong> @Model.Car.Model</p>
+                <p><strong>License Plate:</strong> @Model.Car.LicensePlateNumber</p>
+                <p><strong>Year:</strong> @Model.Car.YearOfManufacture.Year</p>
+                <p><strong>Price per Day:</strong> $@Model.Car.PricePerDay</p>
+            </div>
+
+            <div class="user-info">
+                <h2>User Information</h2>
+                <p><strong>Name:</strong> @Model.User.FirstName @Model.User.MiddleName @Model.User.LastName</p>
+                <p><strong>User ID:</strong> @Model.User.UserId</p>
+            </div>
+        </div>
+
+        <!-- Calendar Section -->
+        <div class="calendar-section">
+            <h2>Select Rental Dates</h2>
+            <div class="calendar-controls">
+                <label for="year">Year:</label>
+                <select id="year" onchange="updateCalendar()"></select>
+
+                <label for="month">Month:</label>
+                <select id="month" onchange="updateCalendar()"></select>
+            </div>
+
+            <div class="calendar">
+                <div class="days-of-week">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>Sun</div>
+                </div>
+                <div id="calendar-dates" class="calendar-dates"></div>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section">
+            <h2>Summary</h2>
+            <p><strong>Selected Dates:</strong> <span id="selected-dates">None</span></p>
+            <p><strong>Total Price:</strong> $<span id="total-price">0.00</span></p>
+        </div>
+
+        <!-- Form Section -->
+        <form asp-action="ConfirmRent" asp-controller="Rent" method="post">
+            <input type="hidden" asp-for="DateOfRent" value="" id="DateOfRent">
+            <input type="hidden" asp-for="DateOfReturn" value="" id="DateOfReturn">
+            <input type="hidden" asp-for="TotalPrice" value="" id="TotalPrice">
+            <input type="hidden" asp-for="Car.CarId" value="@Model.Car.CarId">
+            <input type="hidden" asp-for="User.UserId" value="@Model.User.UserId">
+
+            <div class="actions">
+                <button type="button" class="btn btn-discard" onclick="discardRent()">Discard Rent</button>
+                <button type="submit" class="btn btn-confirm" onclick="populateForm()">Confirm Rent</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    // Pass ViewModel data to JavaScript
+    const reservedDates = @Html.Raw(JsonSerializer.Serialize(Model.RentedDays));
+    const pricePerDay = @Model.Car.PricePerDay;
+</script>

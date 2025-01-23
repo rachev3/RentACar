@@ -141,7 +141,194 @@ function updateSliderTrack() {
 }
 
 
+// Client-side functionality for Car Rental Calendar
 
+document.addEventListener("DOMContentLoaded", function () {
+    // References to DOM elements
+    const calendarDates = document.getElementById("calendar-dates");
+    const yearSelect = document.getElementById("year");
+    const monthSelect = document.getElementById("month");
+   /* const reservedDates = ["2025-01-28", "2025-01-29"];*/ // Reserved dates from backend
+    const selectedDates = []; // Array to store user-selected start and end dates
+    let currentSelectedRange = []; // Array to store all dates in the currently selected range
+  /*  const pricePerDay = parseFloat("@Model.Car.PricePerDay"); // Price per day of the car*/
+    const totalPriceElement = document.getElementById("total-price"); // Element to display total price
+    const selectedDatesElement = document.getElementById("selected-dates"); // Element to display selected dates
 
+    if (!calendarDates || !yearSelect || !monthSelect) {
+     /*   console.error("Required elements are missing from the DOM.");*/
+        return;
+    }
 
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    // Populate the year dropdown (current year + next 5 years)
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year <= currentYear + 5; year++) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+    }
+
+    // Populate the month dropdown
+    months.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = month;
+        monthSelect.appendChild(option);
+    });
+
+    // Set default values for year and month dropdowns
+    yearSelect.value = currentYear;
+    monthSelect.value = new Date().getMonth();
+
+    // Function to render the calendar based on selected year and month
+    function renderCalendar() {
+        const year = parseInt(yearSelect.value); // Selected year
+        const month = parseInt(monthSelect.value); // Selected month
+        const firstDay = new Date(year, month, 1).getDay(); // Day of the week the month starts
+        const daysInMonth = new Date(year, month + 1, 0).getDate(); // Total days in the selected month
+
+        calendarDates.innerHTML = ""; // Clear existing calendar dates
+
+        // Adjust firstDay to start the week from Monday
+        const adjustedFirstDay = (firstDay === 0 ? 6 : firstDay - 1);
+
+        // Add placeholder elements for days before the first day of the month
+        for (let i = 0; i < adjustedFirstDay; i++) {
+            const placeholder = document.createElement("div");
+            placeholder.className = "placeholder"; // Styling for empty spaces
+            calendarDates.appendChild(placeholder);
+        }
+
+        // Add calendar dates with appropriate styling and behavior
+        for (let day = 1; day <= daysInMonth; day++) {
+            const date = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+            const dayElement = document.createElement("div");
+            dayElement.textContent = day;
+
+            // Check if the date is reserved
+            if (reservedDates.includes(date)) {
+                dayElement.className = "reserved"; // Styling for reserved dates
+            } else if (currentSelectedRange.includes(date)) {
+                dayElement.className = "selected"; // Styling for dates in the selected range
+            } else {
+                dayElement.className = "available"; // Styling for available dates
+                dayElement.addEventListener("click", function () {
+                    handleDateSelection(date, dayElement); // Handle user selection
+                });
+            }
+
+            calendarDates.appendChild(dayElement); // Add day to the calendar
+        }
+    }
+
+    // Function to handle user date selection
+    function handleDateSelection(date) {
+        if (selectedDates.length === 2) {
+            // Clear previous selection if two dates are already selected
+            selectedDates.length = 0;
+            currentSelectedRange = [];
+            document.querySelectorAll(".selected").forEach(el => el.classList.remove("selected"));
+        }
+
+        // Add the selected date to the array
+        selectedDates.push(date);
+
+        if (selectedDates.length === 2) {
+            // Handle range selection when two dates are selected
+            const startDate = new Date(selectedDates[0]);
+            const endDate = new Date(selectedDates[1]);
+
+            // Ensure startDate is always before endDate
+            if (startDate > endDate) [startDate, endDate] = [endDate, startDate];
+
+            let allDatesValid = true; // Flag to check if all selected dates are valid
+            currentSelectedRange = []; // Reset the current selected range
+
+            // Generate all dates in the range
+            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                const formattedDate = new Date(d).toISOString().split("T")[0];
+                currentSelectedRange.push(formattedDate);
+
+                // Check if any date in the range is reserved
+                if (reservedDates.includes(formattedDate)) {
+                    allDatesValid = false;
+                }
+            }
+
+            if (allDatesValid) {
+                // Mark all valid dates as selected
+                currentSelectedRange.forEach(date => {
+                    const el = Array.from(calendarDates.children).find(
+                        e => e.textContent == parseInt(date.split("-")[2]) && !e.classList.contains("reserved")
+                    );
+                    if (el) el.classList.add("selected");
+                });
+            } else {
+                // Clear invalid selection and notify the user
+                selectedDates.length = 0;
+                currentSelectedRange = [];
+                alert("Your selection includes reserved dates. Please select a valid range.");
+                document.querySelectorAll(".selected").forEach(el => el.classList.remove("selected"));
+            }
+        }
+
+        updateSummary(); // Update the summary section
+    }
+
+    // Function to update the summary section
+    function updateSummary() {
+        // Update the text for selected dates in the summary section
+        selectedDatesElement.textContent = currentSelectedRange.length ? currentSelectedRange.join(", ") : "None";
+
+        // Filter out valid dates (exclude reserved ones)
+        const validDates = currentSelectedRange.filter(date => !reservedDates.includes(date));
+
+        // Calculate the total price
+        const totalPrice = (validDates.length * pricePerDay).toFixed(2);
+        totalPriceElement.textContent = totalPrice;
+
+        // Retrieve input elements for updating values
+        const dateOfRentInput = document.getElementById("DateOfRent");
+        const dateOfReturnInput = document.getElementById("DateOfReturn");
+        const totalPriceInput = document.getElementById("TotalPrice");
+
+        // Update the inputs with the selected dates and calculated total price
+        if (currentSelectedRange.length > 0) {
+            dateOfRentInput.value = currentSelectedRange[0]; // First selected date
+            dateOfReturnInput.value = currentSelectedRange[currentSelectedRange.length - 1]; // Last selected date
+        } else {
+            dateOfRentInput.value = ""; // Clear if no selection
+            dateOfReturnInput.value = ""; // Clear if no selection
+        }
+
+        // Set the total price value
+        totalPriceInput.value = totalPrice;
+    }
+
+    // Event listeners for year and month dropdown changes
+    yearSelect.addEventListener("change", renderCalendar);
+    monthSelect.addEventListener("change", renderCalendar);
+
+    // Initial rendering of the calendar
+    renderCalendar();
+});
+
+// Function to discard the rent
+function discardRent() {
+    if (confirm("Are you sure you want to discard the rent?")) {
+        window.location.href = "/Car"; // Redirect to car listing or another page
+    }
+}
+
+// Function to confirm the rent
+function confirmRent() {
+    alert("Rent confirmed!");
+    // Implement API call or form submission for rent confirmation
+}
 
