@@ -18,6 +18,14 @@ namespace RentACar.Services.Implementations
         public async Task<CarListViewModel> GetAll()
         {
             var result = await _context.Cars.ToListAsync();
+            var rents =  await _context.Rents.ToListAsync();
+
+            foreach (var car in result)
+            {
+                car.IsRented = rents.Any(rent => rent.CarId == car.CarId && rent.DateOfRent <= DateTime.Today && rent.DateOfReturn >= DateTime.Today);
+            }
+
+
             CarListViewModel viewModel = new CarListViewModel();
             viewModel.Cars = result.Select(car => new CarViewModel
             {

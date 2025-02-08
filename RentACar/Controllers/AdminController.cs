@@ -105,6 +105,7 @@ namespace RentACar.Controllers
         public async Task<IActionResult> Cars()
         {
             var viewModel = await _carService.GetAll();
+           
             return View("CarsManagementPage", viewModel);
         }
 
