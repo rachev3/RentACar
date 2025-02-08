@@ -16,5 +16,6 @@
         public int? StartYearFilter { get; set; }
         public int? EndYearFilter { get; set; }
         public bool? IsRentedFilter { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

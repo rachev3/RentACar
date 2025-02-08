@@ -85,12 +85,12 @@
                 @foreach (var car in Model.Cars)
                 {
                     <div class="car-card">
-                        <div class="car-label">@car.Brand</div>
+                    
                         <div class="car-status-dot @(car.IsRented ? "rented" : "available")"></div>
-                        @* <img src="~/images/cars/@car.CarId.jpg"
+                        <img src="@car.ImageUrl"
                              alt="@car.Brand @car.Model"
                              class="car-image"
-                             onerror="this.onerror=null;this.src='~/images/default-car.jpg';" /> *@
+                             onerror="this.onerror=null;this.src='~/images/default-car.jpg';" />
                         <div class="car-details">
                             <h3 class="car-title">@car.Brand @car.Model</h3>
                             <p class="car-info">@car.YearOfManufacture.Year</p>

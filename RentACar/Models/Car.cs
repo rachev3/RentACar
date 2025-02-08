@@ -9,5 +9,6 @@
         public DateOnly YearOfProduction { get; set; }
         public bool IsRented { get; set; }
         public double PricePerDay { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

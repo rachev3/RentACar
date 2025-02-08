@@ -987,14 +987,16 @@ label {
     height: 350px; /* Fixed height for consistency */
 }
 
-/* Image Section */
 .car-image {
     width: 100%;
-    height: 150px; /* Fixed height */
-    object-fit: contain; /* Ensures the image fits within the space without being cropped */
-    background-color: #f9f9f9; /* Optional: Add a background color for padding effect */
-    padding: 5px; /* Add some spacing around the image */
-    border-bottom: 1px solid #ddd; /* Optional: Separator line between image and content */
+    height: auto; /* Slightly taller for better visibility */
+    object-fit: cover; /* Ensures the image covers the space without distortion */
+    border-radius: 10px; /* Smooth rounded corners */
+    background-color: #fff; /* Clean white background for contrast */
+    overflow: hidden; /* Ensures hover effects don’t overflow */
+    position: relative; /* For hover overlay positioning */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
 }
 
 /* Labels */

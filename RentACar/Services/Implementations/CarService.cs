@@ -27,20 +27,21 @@ namespace RentACar.Services.Implementations
                 LicensePlateNumber = car.LicensePlateNumber,
                 YearOfManufacture = car.YearOfProduction,
                 IsRented = car.IsRented,
-                PricePerDay = car.PricePerDay
+                PricePerDay = car.PricePerDay,
+                ImageUrl = car.ImageUrl
             }).ToList();
             return viewModel;
         }
         public async Task Delete(int carId)
         {
-           var result = await _context.Cars.FirstOrDefaultAsync(car => car.CarId == carId);
+            var result = await _context.Cars.FirstOrDefaultAsync(car => car.CarId == carId);
             _context.Cars.Remove(result);
             await _context.SaveChangesAsync();
         }
 
         public async Task<CarViewModel> GetById(int carId)
         {
-            var result =  await _context.Cars.FirstOrDefaultAsync(car => car.CarId == carId);
+            var result = await _context.Cars.FirstOrDefaultAsync(car => car.CarId == carId);
             CarViewModel viewModel = new CarViewModel
             {
                 CarId = result.CarId,
@@ -49,7 +50,8 @@ namespace RentACar.Services.Implementations
                 LicensePlateNumber = result.LicensePlateNumber,
                 YearOfManufacture = result.YearOfProduction,
                 IsRented = result.IsRented,
-                PricePerDay = result.PricePerDay
+                PricePerDay = result.PricePerDay,
+                ImageUrl = result.ImageUrl
             };
             return viewModel;
         }
@@ -63,6 +65,7 @@ namespace RentACar.Services.Implementations
             car.YearOfProduction = viewModel.YearOfManufacture;
             car.IsRented = viewModel.IsRented;
             car.PricePerDay = viewModel.PricePerDay;
+            car.ImageUrl = viewModel.ImageUrl;
 
             _context.Cars.Update(car);
             await _context.SaveChangesAsync();
@@ -70,18 +73,20 @@ namespace RentACar.Services.Implementations
 
         public async Task Create(CarViewModel viewModel)
         {
-            Car car = new Car{
+            Car car = new Car
+            {
 
                 Brand = viewModel.Brand,
                 Model = viewModel.Model,
                 LicensePlateNumber = viewModel.LicensePlateNumber,
                 YearOfProduction = viewModel.YearOfManufacture,
                 IsRented = viewModel.IsRented,
-                PricePerDay = viewModel.PricePerDay
+                PricePerDay = viewModel.PricePerDay,
+                ImageUrl = viewModel.ImageUrl
             };
             await _context.Cars.AddAsync(car);
             await _context.SaveChangesAsync();
-            
+
         }
     }
 }

@@ -34,6 +34,12 @@
         </div>
 
         <div class="form-group">
+            <label asp-for="ImageUrl" class="control-label">Линк за снимка</label>
+            <input asp-for="ImageUrl" type="text" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
             <label asp-for="IsRented" class="control-label">Наета</label>
             <select asp-for="IsRented" class="form-control">
                 <option value="false">Не</option>
