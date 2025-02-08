@@ -161,8 +161,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+        "Януари", "Февруару", "Март", "Април", "Май", "Юни",
+        "Юли", "Август", "Септември", "Октомври", "Ноември", "Декември"
     ];
 
     // Populate the year dropdown (current year + next 5 years)

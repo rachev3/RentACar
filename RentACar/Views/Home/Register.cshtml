@@ -1,64 +1,60 @@
 ﻿@model RegisterViewModel
 
-<div class="login-page-container">
+<div class="register-page-container">
     <!-- Left Side: Register Form -->
-    <div class="login-form-section">
-        <div class="login-card">
-            <div class="login-header">
-                <h1>Create an Account</h1>
-                <p>Sign up to start your journey</p>
-            </div>
-            <div class="login-body">
-                <form asp-action="Register" asp-controller="Home" method="post">
-                    <div class="form-group">
-                        <label for="UserName">Username</label>
-                        <input asp-for="UserName" class="form-input" id="UserName" placeholder="Enter your username" required>
-                        <span asp-validation-for="UserName" class="validation-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="FirstName">First Name</label>
-                        <input asp-for="FirstName" class="form-input" id="FirstName" placeholder="Enter your first name" required>
-                        <span asp-validation-for="FirstName" class="validation-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="MiddleName">Middle Name</label>
-                        <input asp-for="MiddleName" class="form-input" id="MiddleName" placeholder="Enter your middle name">
-                        <span asp-validation-for="MiddleName" class="validation-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="LastName">Last Name</label>
-                        <input asp-for="LastName" class="form-input" id="LastName" placeholder="Enter your last name" required>
-                        <span asp-validation-for="LastName" class="validation-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="Email">Email</label>
-                        <input asp-for="Email" type="email" class="form-input" id="Email" placeholder="Enter your email" required>
-                        <span asp-validation-for="Email" class="validation-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="PhoneNumber">Phone Number</label>
-                        <input asp-for="PhoneNumber" type="tel" class="form-input" id="PhoneNumber" placeholder="Enter your phone number" required>
-                        <span asp-validation-for="PhoneNumber" class="validation-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="Password">Password</label>
-                        <input asp-for="Password" type="password" class="form-input" id="Password" placeholder="Enter your password" required>
-                        <span asp-validation-for="Password" class="validation-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn-submit">Register</button>
-                    </div>
-                </form>
-            </div>
+    <div class="register-form-section">
+        <div class="register-card">
+            <h1>Създай акаунт</h1>
+            <p>Регистрирай се сега</p>
+            <form asp-action="Register" asp-controller="Home" method="post">
+                <div class="form-group">
+                    <label for="UserName">Потребителско име</label>
+                    <input asp-for="UserName" class="form-input" id="UserName" placeholder="Enter your username" required>
+                    <span asp-validation-for="UserName" class="validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="FirstName">Собствено име</label>
+                    <input asp-for="FirstName" class="form-input" id="FirstName" placeholder="Enter your first name" required>
+                    <span asp-validation-for="FirstName" class="validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="MiddleName">Бащино име</label>
+                    <input asp-for="MiddleName" class="form-input" id="MiddleName" placeholder="Enter your middle name">
+                    <span asp-validation-for="MiddleName" class="validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="LastName">Фамилно име</label>
+                    <input asp-for="LastName" class="form-input" id="LastName" placeholder="Enter your last name" required>
+                    <span asp-validation-for="LastName" class="validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-input" id="Email" placeholder="Enter your email" required>
+                    <span asp-validation-for="Email" class="validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="PhoneNumber">Телефонен номер</label>
+                    <input asp-for="PhoneNumber" type="tel" class="form-input" id="PhoneNumber" placeholder="Enter your phone number" required>
+                    <span asp-validation-for="PhoneNumber" class="validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Парола</label>
+                    <input asp-for="Password" type="password" class="form-input" id="Password" placeholder="Enter your password" required>
+                    <span asp-validation-for="Password" class="validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-submit">Регистрирай</button>
+                </div>
+            </form>
             <div class="login-footer">
-                <small>Already have an account? <a class="register-link" asp-controller="Home" asp-action="Login">Login here</a></small>
+                <small>Вече имаш акаунт? <a class="register-link" asp-controller="Home" asp-action="Login">Влез тук</a></small>
             </div>
         </div>
     </div>
 
     <!-- Right Side: Image Section -->
-    <div class="login-image-section">
-        <img src="/images/offerHandshake.jpg" alt="Register Image" class="login-image">
-        <div class="image-text">Join Us Today!</div>
+    <div class="register-image-section">
+        <div class="image-text">Присъедини се днес!</div>
     </div>
 </div>
+

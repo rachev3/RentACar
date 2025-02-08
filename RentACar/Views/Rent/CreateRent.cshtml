@@ -3,56 +3,55 @@
 
 <div class="rental-page">
     <div class="rent-page-container">
-        <h1>Rent a Car</h1>
+        <h1>Наеми кола</h1>
 
         <!-- Car and User Information Section -->
         <div class="info-section">
             <div class="car-info">
-                <h2>Car Information</h2>
-                <p><strong>Brand:</strong> @Model.Car.Brand</p>
-                <p><strong>Model:</strong> @Model.Car.Model</p>
-                <p><strong>License Plate:</strong> @Model.Car.LicensePlateNumber</p>
-                <p><strong>Year:</strong> @Model.Car.YearOfManufacture.Year</p>
-                <p><strong>Price per Day:</strong> $@Model.Car.PricePerDay</p>
+                <h2>Информация за колата</h2>
+                <p><strong>Марка:</strong> @Model.Car.Brand</p>
+                <p><strong>Модел:</strong> @Model.Car.Model</p>
+                <p><strong>Рег. номер:</strong> @Model.Car.LicensePlateNumber</p>
+                <p><strong>Година на производство:</strong> @Model.Car.YearOfManufacture.Year</p>
+                <p><strong>Цена за ден:</strong> $@Model.Car.PricePerDay</p>
             </div>
 
             <div class="user-info">
-                <h2>User Information</h2>
-                <p><strong>Name:</strong> @Model.User.FirstName @Model.User.MiddleName @Model.User.LastName</p>
-                <p><strong>User ID:</strong> @Model.User.UserId</p>
+                <h2>Наемател</h2>
+                <p><strong>Име:</strong> @Model.User.FirstName @Model.User.MiddleName @Model.User.LastName</p>
             </div>
         </div>
 
         <!-- Calendar Section -->
         <div class="calendar-section">
-            <h2>Select Rental Dates</h2>
+            <h2>Избери дати</h2>
             <div class="calendar-controls">
-                <label for="year">Year:</label>
+                <label for="year">Година:</label>
                 <select id="year" onchange="updateCalendar()"></select>
 
-                <label for="month">Month:</label>
+                <label for="month">Месец:</label>
                 <select id="month" onchange="updateCalendar()"></select>
             </div>
 
             <div class="calendar">
-                <div class="days-of-week">
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
-                    <div>Sun</div>
-                </div>
+              @*   <div class="days-of-week">
+                    <div>Пон</div>
+                    <div>Вт</div>
+                    <div>Ср</div>
+                    <div>Чет</div>
+                    <div>Пет</div>
+                    <div>Съб</div>
+                    <div>Нед</div>
+                </div> *@
                 <div id="calendar-dates" class="calendar-dates"></div>
             </div>
         </div>
 
         <!-- Summary Section -->
         <div class="summary-section">
-            <h2>Summary</h2>
-            <p><strong>Selected Dates:</strong> <span id="selected-dates">None</span></p>
-            <p><strong>Total Price:</strong> $<span id="total-price">0.00</span></p>
+            <h2>Обобщение</h2>
+            <p><strong>Избрани дати:</strong> <span id="selected-dates">Няма</span></p>
+            <p><strong>Дължима сума:</strong> $<span id="total-price">0.00</span></p>
         </div>
 
         <!-- Form Section -->
@@ -64,8 +63,8 @@
             <input type="hidden" asp-for="User.UserId" value="@Model.User.UserId">
 
             <div class="actions">
-                <button type="button" class="btn btn-discard" onclick="discardRent()">Discard Rent</button>
-                <button type="submit" class="btn btn-confirm" onclick="populateForm()">Confirm Rent</button>
+                <button type="button" class="btn btn-discard" onclick="discardRent()">Отказ</button>
+                <button type="submit" class="btn btn-confirm" onclick="populateForm()">Потвърди</button>
             </div>
         </form>
     </div>

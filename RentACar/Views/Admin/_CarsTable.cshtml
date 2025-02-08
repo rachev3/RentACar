@@ -3,11 +3,11 @@
 <table class="admin-panel-table">
     <thead>
         <tr>
-            <th>License plate</th>
-            <th>Name</th>
-            <th>Rent</th>
-            <th>Price</th>
-            <th>Actions</th>
+            <th>Рег. номер</th>
+            <th>Име</th>
+            <th>Наета</th>
+            <th>Цена</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,11 +21,11 @@
                 <td>                  
                     @if (!car.IsRented)
                     {
-                        <a asp-action="EditCar" asp-controller="Admin" asp-route-carId="@car.CarId" class="btn-edit">Edit</a>
+                        <a asp-action="EditCar" asp-controller="Admin" asp-route-carId="@car.CarId" class="btn-edit">Промяна</a>
 
                         <form asp-action="DeleteCar" asp-controller="Admin" method="post" class="delete-form">
                             <input type="hidden" name="carId" value="@car.CarId" />
-                            <button type="submit" class="btn-delete">Delete</button>
+                            <button type="submit" class="btn-delete">Изтрий</button>
                         </form>
                     }
                 </td>

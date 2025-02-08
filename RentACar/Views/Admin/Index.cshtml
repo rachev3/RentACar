@@ -2,8 +2,7 @@
 
 <div class="admin-panel-container">
     <div class="admin-panel-header">
-        <h1>Admin Panel</h1>
-        <p>Manage all users</p>
+        <h1>Админ панел</h1>
     </div>
 
     <!-- Search and Dropdown Section -->
@@ -12,12 +11,12 @@
                id="searchQuery"
                value="@Model.SearchQuery"
                class="form-input search-bar"
-               placeholder="Search by First Name, Middle Name, or Last Name..." />
+               placeholder="Търси по име..." />
 
         <select id="usersPerPage" class="form-select" data-selected-value="@Model.UsersPerPage">
-            <option value="3">Show 3 per page</option>
-            <option value="5">Show 5 per page</option>
-            <option value="7">Show 7 per page</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
         </select>
     </div>
 
@@ -30,13 +29,13 @@
     <div id="paginationControls" class="pagination-controls">
         <a class="btn-pagination @(Model.CurrentPage <= 1 ? "disabled" : "")"
            href="#"
-           data-page="@Math.Max(Model.CurrentPage - 1, 1)">Previous</a>
+           data-page="@Math.Max(Model.CurrentPage - 1, 1)">Предишна</a>
 
-        <span>Page @Model.CurrentPage of @Model.TotalPages</span>
+        <span>Страница @Model.CurrentPage от @Model.TotalPages</span>
 
         <a class="btn-pagination @(Model.CurrentPage >= Model.TotalPages ? "disabled" : "")"
            href="#"
-           data-page="@Math.Min(Model.CurrentPage + 1, Model.TotalPages)">Next</a>
+           data-page="@Math.Min(Model.CurrentPage + 1, Model.TotalPages)">Следваща</a>
     </div>
 
 </div>

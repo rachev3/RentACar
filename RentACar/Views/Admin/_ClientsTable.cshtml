@@ -3,13 +3,13 @@
 <table class="admin-panel-table">
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Last Name</th>
+            <th>Собствено име</th>
+            <th>Бащино име</th>
+            <th>Фамилно име</th>
             <th>Email</th>
-            <th>Phone Number</th>
+            <th>Тел. номер</th>
             <th>Username</th>
-            <th>Actions</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -25,7 +25,7 @@
                 <td>
                     <form asp-action="DeleteUser" asp-controller="Admin" method="post" class="delete-form">
                         <input type="hidden" name="userId" value="@client.Id" />
-                        <button type="submit" class="btn-delete">Delete</button>
+                        <button type="submit" class="btn-delete">Изтрий</button>
                     </form>
                 </td>
             </tr>

@@ -1,37 +1,37 @@
 ﻿@model CarViewModel
 
 <div class="edit-car-container">
-    <h1>Edit Car</h1>
+    <h1>Редактиране на кола</h1>
 
     <form asp-action="EditCarSave" asp-controller="Admin" method="post">
         <input type="hidden" asp-for="CarId" />
 
         <div class="form-group">
-            <label asp-for="LicensePlateNumber" class="control-label">License Plate Number</label>
+            <label asp-for="LicensePlateNumber" class="control-label">Регистрационен номер</label>
             <input asp-for="LicensePlateNumber" class="form-control" />
             <span asp-validation-for="LicensePlateNumber" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="Brand" class="control-label">Brand</label>
+            <label asp-for="Brand" class="control-label">Марка</label>
             <input asp-for="Brand" class="form-control" />
             <span asp-validation-for="Brand" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="Model" class="control-label">Model</label>
+            <label asp-for="Model" class="control-label">Модел</label>
             <input asp-for="Model" class="form-control" />
             <span asp-validation-for="Model" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="YearOfManufacture" class="control-label">Year of Manufacture</label>
+            <label asp-for="YearOfManufacture" class="control-label">Година на производство</label>
             <input asp-for="YearOfManufacture" type="date" class="form-control" />
             <span asp-validation-for="YearOfManufacture" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="IsRented" class="control-label">Is Rented</label>
+            <label asp-for="IsRented" class="control-label">Наета</label>
             <select asp-for="IsRented" class="form-control">
                 <option value="false">No</option>
                 <option value="true">Yes</option>
@@ -40,13 +40,13 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="PricePerDay" class="control-label">Price Per Day</label>
+            <label asp-for="PricePerDay" class="control-label">Цена на ден</label>
             <input asp-for="PricePerDay" type="number" step="0.01" class="form-control" />
             <span asp-validation-for="PricePerDay" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-        <a asp-action="Cars" asp-controller="Admin" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Запази</button>
+        <a asp-action="Cars" asp-controller="Admin" class="btn btn-secondary">Отказ</a>
     </form>
 
 </div>

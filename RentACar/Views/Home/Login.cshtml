@@ -5,28 +5,28 @@
     <div class="login-form-section">
         <div class="login-card">
             <div class="login-header">
-                <h1>Welcome Back!</h1>
-                <p>Sign in to continue</p>
+                <h1>Добре дошли!</h1>
+                <p>Логни се за да продължиш</p>
             </div>
             <div class="login-body">
                 <form asp-action="Login" asp-controller="Home" method="post">
                     <div class="form-group">
-                        <label for="UserName">Username</label>
+                        <label for="UserName">Потребителско име</label>
                         <input asp-for="UserName" class="form-input" id="UserName" placeholder="Enter your username" required>
                         <span asp-validation-for="UserName" class="validation-error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="Password">Password</label>
+                        <label for="Password">Парола</label>
                         <input asp-for="Password" type="password" class="form-input" id="Password" placeholder="Enter your password" required>
                         <span asp-validation-for="Password" class="validation-error"></span>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn-submit">Login</button>
+                        <button type="submit" class="btn-submit">Влез</button>
                     </div>
                 </form>
             </div>
             <div class="login-footer">
-                <small>Don't have an account? <a asp-controller="Home" asp-action="Register" class="register-link">Register here</a></small>
+                <small>Нямаш акаунт? <a asp-controller="Home" asp-action="Register" class="register-link">Регистрирай се тук</a></small>
             </div>
         </div>
     </div>
@@ -34,6 +34,6 @@
     <!-- Right Side: Image Section -->
     <div class="login-image-section">
         <img src="/images/hangingKeys.jpg" alt="Login Image" class="login-image">
-        <div class="image-text">Welcome Back!</div>
+        <div class="image-text">Добре дошли!</div>
     </div>
 </div>

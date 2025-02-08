@@ -2,24 +2,24 @@
 <div class="car-rental-page">
     <!-- Hero Section -->
     <div class="hero-section">
-        <h1 class="hero-title">Rent a Car for Every Journey</h1>
+        <h1 class="hero-title">Наеми автомобил за всяко приключение</h1>
         <div class="hero-filters">
             <form method="get" asp-action="Index" asp-controller="Car">
                 <div class="filter-row">
                     <div class="filter-group">
-                        <label asp-for="BrandFilter">Brand</label>
-                        <input asp-for="BrandFilter" class="form-input" placeholder="Enter brand..." />
+                        <label asp-for="BrandFilter">Марка</label>
+                        <input asp-for="BrandFilter" class="form-input" placeholder="Въведи марка..." />
                     </div>
                     <div class="filter-group">
-                        <label asp-for="ModelFilter">Model</label>
-                        <input asp-for="ModelFilter" class="form-input" placeholder="Enter model..." />
+                        <label asp-for="ModelFilter">Модел</label>
+                        <input asp-for="ModelFilter" class="form-input" placeholder="Въведи модел..." />
                     </div>
                 </div>
                 <div class="filter-row">
                     <div class="filter-group">
-                        <label asp-for="StartYearFilter">Start Year</label>
+                        <label asp-for="StartYearFilter">Година на производство от</label>
                         <select asp-for="StartYearFilter" class="form-input">
-                            <option value="">Select year</option>
+                            <option value=""></option>
                             @for (int year = DateTime.Now.Year; year >= 1900; year--)
                             {
                                 <option value="@year">@year</option>
@@ -27,9 +27,9 @@
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label asp-for="EndYearFilter">End Year</label>
+                        <label asp-for="EndYearFilter">до</label>
                         <select asp-for="EndYearFilter" class="form-input">
-                            <option value="">Select year</option>
+                            <option value=""></option>
                             @for (int year = DateTime.Now.Year; year >= 1900; year--)
                             {
                                 <option value="@year">@year</option>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="filter-row">
                     <div class="filter-group">
-                        <label>Price Range (Per Day)</label>
+                        <label>Цена за ден</label>
                         <div class="price-range-container">
                             <input type="range" id="priceMin" min="0" max="1000" value="@Model.PriceRangeStart" step="10" oninput="updatePriceRange()" />
                             <input type="range" id="priceMax" min="0" max="1000" value="@Model.PriceRangeEnd" step="10" oninput="updatePriceRange()" />
@@ -61,17 +61,17 @@
                         <label>Rental Status</label>
                         <div class="radio-buttons">
                             <label>
-                                <input type="radio" asp-for="IsRentedFilter" value="" /> Any
+                                <input type="radio" asp-for="IsRentedFilter" value="" /> -
                             </label>
                             <label>
-                                <input type="radio" asp-for="IsRentedFilter" value="false" /> Not Rented
+                                <input type="radio" asp-for="IsRentedFilter" value="false" /> Свободни
                             </label>
                             <label>
-                                <input type="radio" asp-for="IsRentedFilter" value="true" /> Rented
+                                <input type="radio" asp-for="IsRentedFilter" value="true" /> Наети
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn-search">Search</button>
+                    <button type="submit" class="btn-search">Търси</button>
                 </div>
             </form>
         </div>
@@ -100,10 +100,10 @@
 
                                 <form method="get" asp-action="Create" asp-controller="Rent">
                                     <input type="hidden" name="CarId" value="@car.CarId" />
-                                    <button type="submit" class="btn-action rent-btn">Rent</button>
+                                    <button type="submit" class="btn-action rent-btn">Наеми</button>
                                 </form>
 
-                                <a href="/Cars/Details/@car.CarId" class="btn-action details-btn">View Details</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
         }
         else
         {
-            <p>No cars found matching the filters.</p>
+            <p>Няма намерени коли.</p>
         }
     </div>
 </div>

@@ -18,16 +18,15 @@
             <div class="logo">RentACar</div>
             <nav>
                 <ul>
-                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="Home" asp-action="Index">Начало</a></li>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li><a href="#ren">Rent Car</a></li>
-                        <li><a asp-controller="Car" asp-action="Index">Cars</a></li>
+                      
+                        <li><a asp-controller="Car" asp-action="Index">Коли</a></li>
                     }
                     else
                     {
-                        <li><a href="" class="strikethrough">Rent Car</a></li>
-                        <li><a href="" class="strikethrough">Cars</a></li>
+                        <li><a href="" class="strikethrough">Коли</a></li>
                     }
                     @*   @if (User.IsInRole("Admin"))
                     {
@@ -45,8 +44,8 @@
                     <div class="dropdown">
                         <i class="fa-solid fa-pen" onclick="toggleDropdown('adminPanelDropdown')"></i>
                         <ul class="dropdown-menu" id="adminPanelDropdown">
-                            <li> <a class="dropdown-item" asp-controller="Admin" asp-action="Index">Users</a></li>
-                            <li> <a class="dropdown-item" asp-controller="Admin" asp-action="Cars">Cars</a></li>
+                            <li> <a class="dropdown-item" asp-controller="Admin" asp-action="Index">Потребители</a></li>
+                            <li> <a class="dropdown-item" asp-controller="Admin" asp-action="Cars">Коли</a></li>
                         </ul>
                     </div>
 
@@ -59,7 +58,7 @@
                         <ul class="dropdown-menu" id="loggedDropdown">
                             <li>
                                 <form asp-controller="Home" asp-action="Logout" method="post" style="display: inline;">
-                                    <button type="submit" class="dropdown-item">Logout</button>
+                                    <button type="submit" class="dropdown-item">Изход</button>
                                 </form>
                             </li>
                         </ul>
@@ -70,8 +69,8 @@
                     <div class="dropdown">
                         <i class="fa-solid fa-user text-red" onclick="toggleDropdown('guestDropdown')"></i>
                         <ul class="dropdown-menu" id="guestDropdown">
-                            <li> <a class="dropdown-item" asp-controller="Home" asp-action="Login">Login</a></li>
-                            <li> <a class="dropdown-item" asp-controller="Home" asp-action="Register">Register</a></li>
+                            <li> <a class="dropdown-item" asp-controller="Home" asp-action="Login">Вход</a></li>
+                            <li> <a class="dropdown-item" asp-controller="Home" asp-action="Register">Регистрация</a></li>
                         </ul>
                     </div>
                 }
