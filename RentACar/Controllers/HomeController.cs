@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RentACar.Models;
@@ -53,6 +54,8 @@ namespace RentACar.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -76,7 +79,7 @@ namespace RentACar.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin, Client")]
         [HttpPost]
         public async Task<IActionResult> Logout()
         {

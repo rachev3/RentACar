@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACar.Services.Interfaces;
 using RentACar.ViewModels.Car;
 
@@ -13,6 +14,7 @@ namespace RentACar.Controllers
             _carService = carService;
         }
 
+        [Authorize(Roles = "Admin, Client")]
         public async Task<IActionResult> Index(CarListViewModel filterViewModel)
         {
             var viewModel = await _carService.GetAll();

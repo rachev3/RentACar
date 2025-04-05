@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RentACar.Models;
 using RentACar.Services.Interfaces;
@@ -16,23 +17,25 @@ namespace RentACar.Controllers
             _rentService = rentService;
             _userManager = userManager;
         }
-
+        [Authorize(Roles = "Admin, Client")]
         public async Task<IActionResult> Create(int carId)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return Unauthorized(); // Handle the case where the user is not authenticated
+                return Unauthorized(); 
             }
 
             var viewModel = await _rentService.CreatingRentAction(carId, user.Id);
             if (viewModel == null)
             {
-                return NotFound(); // Handle the case where the view model could not be created
+                return NotFound(); 
             }
 
             return View("CreateRent", viewModel);
         }
+
+        [Authorize(Roles = "Admin, Client")]
         [HttpPost]
         public async Task<IActionResult> ConfirmRent(CreateRentViewModel viewModel)
         {   

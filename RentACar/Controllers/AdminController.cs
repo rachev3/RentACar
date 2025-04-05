@@ -80,21 +80,18 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string userId)
         {
-            // Find the user by ID
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return NotFound("User not found");
             }
 
-            // Delete the user
             var result = await _userManager.DeleteAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index"); // Redirect to a user list page
+                return RedirectToAction("Index");
             }
 
-            // Handle errors
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
@@ -112,10 +109,8 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteCar(int carId)
         {
-            // Retrieve the car from the service
             var car = await _carService.GetById(carId);
 
-            // Validate if the car is rented
             if (car == null)
             {
                 TempData["Error"] = "Car not found.";
@@ -128,7 +123,6 @@ namespace RentACar.Controllers
                 return RedirectToAction("Cars");
             }
 
-            // Perform deletion
             await _carService.Delete(carId);
     
             return RedirectToAction("Cars");
@@ -139,7 +133,6 @@ namespace RentACar.Controllers
         {
             var viewModel = await _carService.GetById(carId);
 
-            // Validate if the car is rented
             if (viewModel == null)
             {
                 TempData["Error"] = "Car not found.";
@@ -158,10 +151,8 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> EditCarSave(CarViewModel viewModel)
         {
-            // Retrieve the car from the service
             var existingCar = await _carService.GetById(viewModel.CarId);
 
-            // Validate if the car is rented
             if (existingCar == null)
             {
                 TempData["Error"] = "Car not found.";
@@ -174,7 +165,6 @@ namespace RentACar.Controllers
                 return RedirectToAction("Cars");
             }
 
-            // Perform update
             await _carService.Update(viewModel);
             return RedirectToAction("Cars");
         }
