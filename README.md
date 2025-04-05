@@ -28,9 +28,8 @@ A modern, full-featured car rental management system built with ASP.NET Core MVC
 ✅ Razor View Templates
 ✅ Client-side Validation
 
-<<<<<<< HEAD
-=======
 ## Screenshots
+
 ![{5B4E2029-7425-4868-9F82-8864C9302533}](https://github.com/user-attachments/assets/7c2200cb-a826-4cd8-bd45-272e0145f647)
 ![{F38703EC-2F4E-4CD8-9F92-2E27DE3364AF}](https://github.com/user-attachments/assets/10de22d2-38b9-4ebe-8924-ec9a08c3a145)
 ![{83C6AB2B-76D0-4F95-A250-3938B61F43E9}](https://github.com/user-attachments/assets/16f55c59-3d23-416b-992d-6da213da01ca)
@@ -41,8 +40,6 @@ A modern, full-featured car rental management system built with ASP.NET Core MVC
 ![{130F247F-F178-42A2-8096-4D5BC2DA4325}](https://github.com/user-attachments/assets/3c8fa5ef-57b4-481d-a551-ebd1c01f3121)
 ![{3453DBCD-30F2-444E-A115-BFC9A4199539}](https://github.com/user-attachments/assets/2aec1254-3c0f-4319-a4ef-f5b1fc60fe82)
 
-
->>>>>>> 24eedbacb120c5e6327a9a9c5e52255a250f1b11
 ## 🏗️ Project Structure
 
 ```
