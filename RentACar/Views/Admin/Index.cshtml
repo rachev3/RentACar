@@ -5,7 +5,6 @@
         <h1>Админ панел</h1>
     </div>
 
-    <!-- Search and Dropdown Section -->
     <div class="admin-panel-controls">
         <input type="text"
                id="searchQuery"
@@ -20,12 +19,10 @@
         </select>
     </div>
 
-    <!-- Table -->
     <div id="clientsTable" class="admin-panel-table-container">
         @Html.Partial("_ClientsTable", Model)
     </div>
 
-    <!-- Pagination Controls -->
     <div id="paginationControls" class="pagination-controls">
         <a class="btn-pagination @(Model.CurrentPage <= 1 ? "disabled" : "")"
            href="#"

@@ -4,8 +4,8 @@
     {
         public CarListViewModel()
         {
-            PriceRangeStart = 0; // Set default min price to 0
-            PriceRangeEnd = 1000; // Set default max price to 1000
+            PriceRangeStart = 0; 
+            PriceRangeEnd = 1000; 
         }
 
         public List<CarViewModel> Cars { get; set; }

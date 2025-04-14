@@ -7,12 +7,10 @@
         <h1>Админски панел</h1>
     </div>
 
-    <!-- Add Button -->
     <div class="admin-panel-controls">
         <a asp-action="CreateCar" asp-controller="Admin" class="btn">Добави кола</a>
     </div>
 
-    <!-- Table -->
     <div id="carsTable" class="admin-panel-table-container">
         @if (TempData["Error"] != null)
         {

@@ -42,7 +42,7 @@ namespace RentACar.Services.Implementations
 
             if (car == null || user == null)
             {
-                return null; // Handle the case where car or user is not found
+                return null; 
             }
 
             var rents = await GetRentsByCarId(carId);
@@ -60,8 +60,8 @@ namespace RentACar.Services.Implementations
                 Car = car,
                 User = userViewModel,
                 DateOfRent = DateOnly.FromDateTime(DateTime.Now),
-                DateOfReturn = DateOnly.FromDateTime(DateTime.Now.AddDays(7)), // Example: default return date is 7 days from now
-                TotalPrice = car.PricePerDay * 7, // Example: total price for 7 days
+                DateOfReturn = DateOnly.FromDateTime(DateTime.Now.AddDays(7)), 
+                TotalPrice = car.PricePerDay * 7, 
                 Rents = rents
             };
 

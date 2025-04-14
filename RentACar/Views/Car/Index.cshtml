@@ -1,6 +1,5 @@
 ﻿@model CarListViewModel
 <div class="car-rental-page">
-    <!-- Hero Section -->
     <div class="hero-section">
         <h1 class="hero-title">Наеми автомобил за всяко приключение</h1>
         <div class="hero-filters">
@@ -49,7 +48,6 @@
                                 <span class="price-divider">-</span>
                                 <span id="priceMaxValue">$@Model.PriceRangeEnd</span>
                             </div>
-                            <!-- Hidden inputs to bind to the ViewModel -->
                             <input type="hidden" asp-for="PriceRangeStart" id="PriceRangeStart" />
                             <input type="hidden" asp-for="PriceRangeEnd" id="PriceRangeEnd" />
                             <input type="hidden" asp-for="Cars" id="PriceRangeEnd" />
@@ -77,7 +75,6 @@
         </div>
     </div>
 
-    <!-- Car Listing Section -->
     <div class="car-listing-section">
         @if (Model.Cars != null)
         {

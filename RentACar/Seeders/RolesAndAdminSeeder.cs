@@ -10,11 +10,10 @@ namespace RentACar.Seeders
     {
         public static async Task Initialize(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext context)
         {
-            string[] roleNames = { "Admin", "Client" }; // List of roles
+            string[] roleNames = { "Admin", "Client" }; 
 
             IdentityResult roleResult;
 
-            // Create roles if they don't exist
             foreach (var roleName in roleNames)
             {
                 var roleExist = await roleManager.RoleExistsAsync(roleName);
@@ -25,7 +24,6 @@ namespace RentACar.Seeders
                 }
             }
 
-            // Admin user
             var adminUser = new User
             {
                 UserName = "Administrator",
@@ -39,7 +37,6 @@ namespace RentACar.Seeders
 
             var admin = await userManager.FindByEmailAsync("admin@example.com");
 
-            // Check if admin exists; create if not
             if (admin == null)
             {
                 var createPowerUser = await userManager.CreateAsync(adminUser, adminPassword);
@@ -49,7 +46,6 @@ namespace RentACar.Seeders
                 }
             }
 
-            // Seed 15 client users
             for (int i = 1; i <= 15; i++)
             {
                 var clientUser = new User
@@ -66,7 +62,6 @@ namespace RentACar.Seeders
 
                 var client = await userManager.FindByEmailAsync(clientUser.Email);
 
-                // Check if the client exists; create if not
                 if (client == null)
                 {
                     var createClient = await userManager.CreateAsync(clientUser, clientPassword);
@@ -77,7 +72,6 @@ namespace RentACar.Seeders
                 }
             }
 
-            // Seed 8 cars
             if (!context.Cars.Any())
             {
                 var cars = new[]

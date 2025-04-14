@@ -5,7 +5,6 @@
     <div class="rent-page-container">
         <h1>Наеми кола</h1>
 
-        <!-- Car and User Information Section -->
         <div class="info-section">
             <div class="car-info">
                 <h2>Информация за колата</h2>
@@ -22,7 +21,6 @@
             </div>
         </div>
 
-        <!-- Calendar Section -->
         <div class="calendar-section">
             <h2>Избери дати</h2>
             <div class="calendar-controls">
@@ -34,27 +32,16 @@
             </div>
 
             <div class="calendar">
-              @*   <div class="days-of-week">
-                    <div>Пон</div>
-                    <div>Вт</div>
-                    <div>Ср</div>
-                    <div>Чет</div>
-                    <div>Пет</div>
-                    <div>Съб</div>
-                    <div>Нед</div>
-                </div> *@
                 <div id="calendar-dates" class="calendar-dates"></div>
             </div>
         </div>
 
-        <!-- Summary Section -->
         <div class="summary-section">
             <h2>Обобщение</h2>
             <p><strong>Избрани дати:</strong> <span id="selected-dates">Няма</span></p>
             <p><strong>Дължима сума:</strong> $<span id="total-price">0.00</span></p>
         </div>
 
-        <!-- Form Section -->
         <form asp-action="ConfirmRent" asp-controller="Rent" method="post">
             <input type="hidden" asp-for="DateOfRent" value="" id="DateOfRent">
             <input type="hidden" asp-for="DateOfReturn" value="" id="DateOfReturn">
@@ -70,7 +57,6 @@
     </div>
 </div>
 <script>
-    // Pass ViewModel data to JavaScript
     const reservedDates = @Html.Raw(JsonSerializer.Serialize(Model.RentedDays));
     const pricePerDay = @Model.Car.PricePerDay;
 </script>
